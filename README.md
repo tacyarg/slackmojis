@@ -1,2 +1,3 @@
 # slackmojis
-https://slackmojis.com/
+
+lazy way to download every emoji on https://slackmojis.com/

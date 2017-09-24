@@ -1,0 +1,2 @@
+# slackmojis
+https://slackmojis.com/

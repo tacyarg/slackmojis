@@ -9,6 +9,9 @@ const highland = require('highland')
 const url = require('url');
 const path = require('path')
 
+var dir = path.resolve('emojis')
+if (!fs.existsSync(dir)) fs.mkdirSync(dir)
+
 request({
     url: 'https://slackmojis.com/',
     json: false

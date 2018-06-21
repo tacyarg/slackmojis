@@ -30,10 +30,12 @@ request({
     })
 
     console.time('Downloads Complete.')
-    return Promise.map(list, item => {
+    return Promise.mapSeries(list, item => {
         console.log(JSON.stringify(item))
-        return Promise.resolve(downloadFile(item.url, item.filename)).delay(250)
-    }, {concurrency: 10}).finally(function(){
+        return Promise.method(function(){
+            return downloadFile(item.url, item.filename)
+        })
+    }).finally(function(){
         console.timeEnd('Downloads Complete.')
     })
     

@@ -19,7 +19,7 @@ request({
     var $ = cheerio.load(body);
 
     function downloadFile (url, filename) {
-        return request(url).pipe(fs.createWriteStream(path.resolve('emojis/'+filename)))
+        return request(url).pipe(fs.createWriteStream(`${dir}/${filename}`))
     }
 
     var list = []
@@ -35,9 +35,7 @@ request({
     console.time('Downloads Complete.')
     return Promise.mapSeries(list, item => {
         console.log(JSON.stringify(item))
-        return Promise.method(function(){
-            return downloadFile(item.url, item.filename)
-        })
+        return downloadFile(item.url, item.filename)
     }).finally(function(){
         console.timeEnd('Downloads Complete.')
     })

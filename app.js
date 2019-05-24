@@ -1,12 +1,6 @@
 const request = require("request-promise-native");
 const cheerio = require('cheerio');
-const cloudscraper = require('cloudscraper');
 const fs = require('fs');
-const Promise = require('bluebird')
-const lodash = require('lodash')
-const assert = require('assert')
-const highland = require('highland')
-const url = require('url');
 const path = require('path')
 
 var dir = path.resolve('emojis')

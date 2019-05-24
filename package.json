@@ -18,6 +18,7 @@
     "lodash": "^4.17.4",
     "request": "^2.82.0",
     "request-progress": "^3.0.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.7"
   }
 }

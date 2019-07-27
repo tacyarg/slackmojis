@@ -1,3 +1,9 @@
-# slackmojis
+# Slackmojis Downloader
 
-lazy way to download every emoji on https://slackmojis.com/
+A lazy way to sequentially parse & download every emoji from https://slackmojis.com/
+
+# Run
+```
+npm i
+npm start
+```

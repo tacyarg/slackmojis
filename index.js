@@ -42,7 +42,10 @@ function DownloadFile(name, url) {
         clearTimeout(cancelTimer);
         reject(e);
       })
-      .then((res) => res.data.pipe(file));
+      .then((res) => {
+        if(!res?.data) return reject()
+        return res.data.pipe(file)
+      });
   });
 }
 
@@ -61,7 +64,7 @@ const getPage = (index = 0) => {
     url: `https://slackmojis.com/emojis.json?page=${index}`,
     // json: true,
   }).then((response) => response.data);
-}
+};
 
 function DownloadImages(list) {
   let count = 0;
@@ -69,14 +72,15 @@ function DownloadImages(list) {
 
   return Promise.map(
     list,
-    async ({ name, image_url, category }) => {
-      const filename = parseFilename(image_url);
+    async ({ id, name, image_url, category }) => {
+      const filename = `${id}_${parseFilename(image_url)}`
 
       await downloadFileRetry(filename, image_url);
 
       console.log(`${list.length - ++count} / ${list.length} ${filename}...`);
 
       const metadata = {
+        id,
         filename,
         name,
         image_url,
